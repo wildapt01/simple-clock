@@ -1,11 +1,13 @@
 # Simple analogue clock in Python 3
 
 import turtle
+import time
 
 wndw = turtle.Screen()
 wndw.bgcolor("black")
 wndw.setup(width=600, height=600)
 wndw.title("Analogue Clock")
+wndw.tracer(0)
 
 # Create the drawing pen
 pen = turtle.Turtle()
@@ -68,7 +70,14 @@ def draw_clock(hr, mn, sec, pen):
     pen.fd(110)
 
 
-# ---------------------
-draw_clock(10, 15, 25, pen)
+while True:
+    hr = int(time.strftime("%I"))
+    mn = int(time.strftime("%M"))
+    sec = int(time.strftime("%S"))
+
+    draw_clock(hr, mn, sec, pen)
+    wndw.update()
+    time.sleep(1)
+    pen.clear()
 
 wndw.mainloop()
