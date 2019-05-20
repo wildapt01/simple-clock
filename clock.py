@@ -39,35 +39,22 @@ def draw_clock(hr, mn, sec, pen):
         pen.goto(0, 0)
         pen.rt(30)
 
-    # Draw the hour hand
-    pen.penup()
-    pen.goto(0, 0)
-    pen.color("white")
-    pen.setheading(90)
-    angle = (hr/12)*360
-    pen.rt(angle)
-    pen.pendown()
-    pen.fd(80)
+    # Draw the hands
+    # Each tuple in list hands describes the color, the length
+    # and the divider for the angle
+    hands = [("white", 80, 12), ("blue", 150, 60), ("red", 110, 60)]
+    time_set = (hr, mn, sec)
 
-    # Draw the minute hand
-    pen.penup()
-    pen.goto(0, 0)
-    pen.color("blue")
-    pen.setheading(90)
-    angle = (mn/60)*360
-    pen.rt(angle)
-    pen.pendown()
-    pen.fd(150)
-
-    # Draw the second hand
-    pen.penup()
-    pen.goto(0, 0)
-    pen.color("red")
-    pen.setheading(90)
-    angle = (sec/60)*360
-    pen.rt(angle)
-    pen.pendown()
-    pen.fd(110)
+    for hand in hands:
+        time_part = time_set[hands.index(hand)]
+        angle = (time_part/hand[2])*360
+        pen.penup()
+        pen.goto(0, 0)
+        pen.color(hand[0])
+        pen.setheading(90)
+        pen.rt(angle)
+        pen.pendown()
+        pen.fd(hand[1])
 
 
 while True:
