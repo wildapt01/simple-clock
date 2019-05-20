@@ -15,6 +15,8 @@ pen.pensize(3)
 
 
 def draw_clock(pen):
+
+    # Draw clock face
     pen.up()
     pen.goto(0, 210)
     pen.setheading(180)
@@ -22,7 +24,21 @@ def draw_clock(pen):
     pen.pendown()
     pen.circle(210)
 
+    # Draw hour hashes
+    pen.up()
+    pen.goto(0, 0)
+    pen.setheading(90)
 
+    for _ in range(12):
+        pen.fd(190)
+        pen.pendown()
+        pen.fd(20)
+        pen.penup()
+        pen.goto(0, 0)
+        pen.rt(30)
+
+
+# ---------------------
 draw_clock(pen)
 
 wndw.mainloop()
