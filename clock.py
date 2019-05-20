@@ -14,7 +14,7 @@ pen.speed(0)
 pen.pensize(3)
 
 
-def draw_clock(pen):
+def draw_clock(hr, mn, sec, pen):
 
     # Draw clock face
     pen.up()
@@ -37,8 +37,38 @@ def draw_clock(pen):
         pen.goto(0, 0)
         pen.rt(30)
 
+    # Draw the hour hand
+    pen.penup()
+    pen.goto(0, 0)
+    pen.color("white")
+    pen.setheading(90)
+    angle = (hr/12)*360
+    pen.rt(angle)
+    pen.pendown()
+    pen.fd(80)
+
+    # Draw the minute hand
+    pen.penup()
+    pen.goto(0, 0)
+    pen.color("blue")
+    pen.setheading(90)
+    angle = (mn/60)*360
+    pen.rt(angle)
+    pen.pendown()
+    pen.fd(150)
+
+    # Draw the second hand
+    pen.penup()
+    pen.goto(0, 0)
+    pen.color("red")
+    pen.setheading(90)
+    angle = (sec/60)*360
+    pen.rt(angle)
+    pen.pendown()
+    pen.fd(110)
+
 
 # ---------------------
-draw_clock(pen)
+draw_clock(10, 15, 25, pen)
 
 wndw.mainloop()
