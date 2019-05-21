@@ -41,7 +41,7 @@ def draw_clock(hr, mn, sec, pen):
 
     # Draw the hands
     # Each tuple in list hands describes the color, the length
-    # and the divider for the angle
+    # and the divisor for the angle
     hands = [("white", 80, 12), ("blue", 150, 60), ("red", 110, 60)]
     time_set = (hr, mn, sec)
 
